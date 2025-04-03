@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="click"
+            type="com.moonring.ring.WelcomeActivity.ProxyClick" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/welcome_baseview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.zhpan.bannerview.BannerViewPager
+            android:id="@+id/banner_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:bvp_auto_play="false"
+            app:bvp_can_loop="false"
+            app:bvp_indicator_checked_color="@color/accent"
+            app:bvp_indicator_gravity="center"
+            app:bvp_indicator_normal_color="@color/white"
+            app:bvp_indicator_slide_mode="worm"
+            app:bvp_indicator_style="circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingClass" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

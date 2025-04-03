@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="tab_sel">#FFF53F3F</color>
+    <color name="tab_n_sel">#FF4E5969</color>
+    <color name="tab_background_selected">#00000000</color>
+    <color name="tab_background_unselected">#00000000</color>
+    <color name="cloor_ff86909c">#FF86909C</color>
+    <color name="color_fff53f3f">#FFF53F3F</color>
+    <color name="gray_f5">#F5F5F5</color>
+
+    <color name="switch_thumb_normal">#FFFFFF</color>
+    <color name="switch_thumb_checked">#4CAF50</color>
+    <color name="switch_track_checked">#77C2BB</color>
+    <color name="_1296db">#1296db</color>
+    <color name="_9A9DAC">#9A9DAC</color>
+    <color name="_5D5FEF">#5D5FEF</color>
+    <color name="_FF903E">#FF903E</color>
+    <color name="_F45EC1">#F45EC1</color>
+    <color name="purple_9c27b0">#9C27B0</color>
+
+    <color name="m3_ref_palette_neutral6">#FFFFFF</color>
+    <color name="tab_color">#21283F</color>
+</resources>

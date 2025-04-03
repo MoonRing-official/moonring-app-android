@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ProductTitle">
+        <attr name="pro_title" format="string"></attr>
+        <attr name="pro_color" format="color"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="TopArcView">
+        <attr name="arcRadius" format="dimension"/>
+        <attr name="leftTopDistance" format="dimension"/>
+        <attr name="rightTopDistance" format="dimension"/>
+        <attr name="fillColor" format="color"/>
+    </declare-styleable>
+
+
+
+        <declare-styleable name="SettingItemView">
+            <attr name="settingIcon" format="reference"/>
+            <attr name="settingTitle" format="string"/>
+        </declare-styleable>
+
+    <declare-styleable name="PasswordItemView">
+        <attr name="passwordHint" format="string" />
+        <attr name="showCloseEyeIcon" format="boolean"/>
+    </declare-styleable>
+    <declare-styleable name="BatteryView">
+        <attr name="slRecWidth" format="dimension" />
+        <attr name="slRecHeight" format="dimension" />
+        <attr name="scaleFactor" format="float" />
+    </declare-styleable>
+</resources>

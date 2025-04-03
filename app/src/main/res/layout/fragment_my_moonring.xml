@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.moonring.ring.viewmodule.state.MyMoonRingViewModel" />
+        <variable
+            name="click"
+            type="com.moonring.ring.ui.fragment.MyMoonRingFragment.ProxyClick" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_login_bg"/>
+
+        <include
+            layout="@layout/include_toolbar" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/ll_later">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="37dp">
+
+                <!-- 账户和安全标题 -->
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Moon Ring"
+                    android:textColor="#FFFFFF"
+                    android:textSize="36sp"
+                    android:lineHeight="43dp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+                <RelativeLayout
+                    android:id="@+id/cl_device_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    noRepeatClick="@{() -> click.test()}"
+                    >
+                    
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="12dp"
+                        android:visibility="@{viewModel.connectionState == 2 ? View.VISIBLE : View.GONE}">
+                        <com.moonring.ring.view.BatteryView
+                            android:id="@+id/batteryView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:progress="@{viewModel.batteryLevel}"
+                            app:isCharging = "@{viewModel.isCharging}"
+                            app:slRecWidth="40dp"
+                            app:slRecHeight="25dp"
+                          />
+
+
+                        <TextView
+                            android:id="@+id/tvBattery"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="60%"
+                            android:text="@{viewModel.batteryLevel+`%`}"
+                            android:layout_marginLeft="4dp"
+                            android:textColor="#FFFFFF"
+                            android:textSize="22sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvStautus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cannot be found"
+                        android:paddingVertical="4dp"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        tools:visibility="gone"
+                        android:visibility="@{viewModel.connectionState == 2 ? View.GONE : View.VISIBLE}"/>
+                </RelativeLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clRHV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tvHWVersionLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ring Hardware Version"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/btnRefreshHW"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_refresh"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvHWVersionLabel"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvHWVersionLabel" />
+
+                    <TextView
+                        android:id="@+id/tvHWVersion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gen 1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toStartOf="@+id/tvHWVersionLabel"
+                        app:layout_constraintTop_toBottomOf="@+id/tvHWVersionLabel" />
+
+                    <View
+                        android:id="@+id/lineHW"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintTop_toBottomOf="@+id/tvHWVersion" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clLastSyn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
+
+                    <TextView
+                        android:id="@+id/tvLastSyncedLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Last Synced"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/btnRefresh"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_refresh"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvLastSyncedLabel"
+                        app:layout_constraintTop_toTopOf="@+id/tvLastSyncedLabel"
+                        app:layout_constraintRight_toRightOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tvLastSyncedTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="23/12/2024 12:55:55"
+                        android:text="@{viewModel.lastSynTimeShow}"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintTop_toBottomOf="@+id/tvLastSyncedLabel"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvLastSyncedLabel"/>
+
+
+
+                    <View
+                        android:id="@+id/line"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintTop_toBottomOf="@+id/tvLastSyncedTime" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clMACAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvMACLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MAC Address"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvMACValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="00:1A:2B:3C:4D:5E"
+                        android:text='@{viewModel.bleDeviceAddressShow}'
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toStartOf="@+id/tvMACLabel"
+                        app:layout_constraintTop_toBottomOf="@+id/tvMACLabel" />
+
+                    <View
+                        android:id="@+id/lineMAC"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintTop_toBottomOf="@+id/tvMACValue" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clAppVersion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvAppVersionLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="App Version"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvAppVersion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        tools:text="v1.2.3"
+                        android:text='@{viewModel.appVersion}'
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@+id/tvAppVersionLabel"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAppVersionLabel" />
+
+                    <View
+                        android:id="@+id/lineAppVersion"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAppVersion" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clFirmware"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvFirmwareLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Firmware Version"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvFirmwareVersion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        tools:text="v2.1.5"
+                        android:text="@{ viewModel.versionShow}"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@+id/tvFirmwareLabel"
+                        app:layout_constraintTop_toBottomOf="@+id/tvFirmwareLabel" />
+
+                    <ImageView
+                        android:id="@+id/iv_firmware"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        noRepeatClick="@{() -> click.getOtaInfo()}"
+                        android:src="@drawable/ic_refresh"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvFirmwareLabel"
+                        app:layout_constraintTop_toTopOf="@+id/tvFirmwareLabel"
+                        app:layout_constraintRight_toRightOf="parent"/>
+
+                    <View
+                        android:id="@+id/lineFirmware"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#FFFFFF"
+                        android:visibility="invisible"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintTop_toBottomOf="@+id/tvFirmwareVersion" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/ll_later"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="32dp"
+            android:layout_marginHorizontal="37dp"
+            tools:visibility="visible"
+            android:visibility="@{viewModel.connectionState == 2 ? View.VISIBLE : View.INVISIBLE}">
+
+
+            <Button
+                android:id="@+id/btn_later"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:text="Unpair"
+                android:textSize="22sp"
+                noRepeatClick="@{() -> click.unpair()}"
+                android:textColor="@color/white"
+                android:background="@drawable/moonring_blue_btn" />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_pair"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:text="Pair"
+            android:textSize="22sp"
+            noRepeatClick="@{() -> click.pair()}"
+            android:textColor="@color/white"
+            android:layout_marginBottom="32dp"
+            android:layout_marginHorizontal="37dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/moonring_a_btn"
+            tools:visibility="gone"
+            android:visibility="@{viewModel.connectionState == 2 ? View.INVISIBLE : View.VISIBLE}"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

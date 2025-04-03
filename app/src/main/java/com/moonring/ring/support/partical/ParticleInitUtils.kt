@@ -1,0 +1,71 @@
+package com.moonring.ring.support.partical
+
+import android.app.Application
+import android.content.Context
+import auth.core.adapter.AuthCoreAdapter
+import com.evm.adapter.EVMConnectAdapter
+import com.particle.base.*
+import com.particle.base.model.DAppMetadata
+import com.particle.connect.ParticleConnect
+import com.particle.erc4337.ParticleNetworkAA.initAAMode
+import com.particle.erc4337.aa.BiconomyV2AAService
+import com.particle.gui.ParticleWallet
+import com.phantom.adapter.PhantomConnectAdapter
+import com.solana.adapter.SolanaConnectAdapter
+import com.wallet.connect.adapter.*
+import network.particle.chains.ChainInfo
+
+object ParticleInitUtils {
+
+    // it is recommended to initialize it in Application. This is only used as an example.
+    fun initAuth(context: Context, chainInfo: ChainInfo) {
+        ParticleNetwork.init(context, Env.PRODUCTION, chainInfo)
+    }
+
+    fun initConnect(app: Application, chainInfo: ChainInfo) {
+        val dAppMetadata = DAppMetadata(
+            "Particle Connect",
+            "https://connect.particle.network/icons/512.png",
+            "https://particle.network",
+            description = "Particle Connect is a decentralized wallet connection protocol that makes it easy for users to connect their wallets to your DApp.",
+        )
+        ParticleConnect.init(
+            app, Env.PRODUCTION, chainInfo, dAppMetadata
+        ) {
+            listOf(
+                AuthCoreAdapter(),
+                MetaMaskConnectAdapter(),
+                RainbowConnectAdapter(),
+                TrustConnectAdapter(),
+                PhantomConnectAdapter(),
+                WalletConnectAdapter(),
+                ImTokenConnectAdapter(),
+                BitGetConnectAdapter(),
+                EVMConnectAdapter(),
+                SolanaConnectAdapter(),
+            )
+        }
+    }
+
+    fun initWallet(app: Application, chainInfo: ChainInfo) {
+        initConnect(app, chainInfo)
+        /**
+         *  supportChains is optional,, if not provided, all chains will be supported
+         *  if provided, only the chains in the list will be supported,Only the main chain is required,
+         *  if you want to support devnet, you can call showTestNetworks() to show the devnet networks
+         */
+
+        ParticleWallet.init(
+            app
+        ).apply {
+            setShowTestNetworkSetting(true)
+            setShowManageWalletSetting(true)
+            hideMainBackIcon()
+        }
+        ParticleNetwork.setLanguage(LanguageEnum.EN)
+        //enable AA-4337 mode
+        ParticleNetwork.initAAMode()
+//        ParticleNetwork.setAAService(BiconomyV2AAService)
+//        ParticleNetwork.getAAService().enableAAMode()
+    }
+}

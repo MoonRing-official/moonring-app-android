@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 解决 Android P 禁用 http 请求的问题 -->
+<network-security-config xmlns:tools="http://schemas.android.com/tools">
+    <base-config cleartextTrafficPermitted="false" />
+    <domain-config cleartextTrafficPermitted="true">
+<!--        <domain includeSubdomains="true">8.129.85.111</domain>-->
+        <domain includeSubdomains="true">192.168.31.61</domain>
+        <domain includeSubdomains="true">android.bugly.qq.com</domain>
+
+    </domain-config>
+
+</network-security-config>

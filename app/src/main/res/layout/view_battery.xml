@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <com.hjq.shape.layout.ShapeConstraintLayout
+        android:id="@+id/sl_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+      >
+        <com.hjq.shape.layout.ShapeRelativeLayout
+            android:id="@+id/sl_rec"
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            app:shape="rectangle"
+            app:shape_solidColor="@color/white"
+            app:shape_radius="6dp">
+            <com.hjq.shape.layout.ShapeRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:padding="2dp"
+                app:shape="rectangle"
+                app:shape_solidColor="@color/black"
+                app:shape_radius="2dp"
+                android:layout_centerInParent="true">
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:max="100"
+                    tools:progress="0"
+                    android:progressDrawable="@drawable/battery_drawable" />
+                <ImageView
+                    android:id="@+id/iv_charge"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_charging"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone"
+                    tools:visibility="visible"/>
+            </com.hjq.shape.layout.ShapeRelativeLayout>
+
+        </com.hjq.shape.layout.ShapeRelativeLayout>
+        <com.hjq.shape.view.ShapeView
+            android:layout_width="2dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="6dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/sl_rec"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:shape="rectangle"
+            app:shape_solidColor="@color/white"
+            app:shape_topRightRadius="2dp"
+            app:shape_bottomRightRadius="2dp"/>
+    </com.hjq.shape.layout.ShapeConstraintLayout>
+</layout>
+
+

@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name"></string>
+    <string name="bottom_name1">home</string>
+    <string name="bottom_name2">project</string>
+    <string name="bottom_name3">square</string>
+    <string name="bottom_name4">work</string>
+    <string name="bottom_name5">my</string>
+    <string name="error_occurred"></string>
+
+    <string name="longin_title">LOGIN/SIGN UP</string>
+    <string name="longin_email">Email</string>
+    <string name="longin_cod">Code</string>
+    <string name="longin_password">Password</string>
+    <string name="longin_email_hint">Email Address</string>
+    <string name="longin_activation_hint">Activation Cooe</string>
+    <string name="longin_code">Code</string>
+    <string name="longin_code_hint1">Verification Code</string>
+    <string name="longin_code_hint2">Email Verification code</string>
+    <string name="longin_password_hint1">Private Password</string>
+    <string name="longin_send_code">Send code</string>
+    <string name="longin_capitalize">LOGIN</string>
+    <string name="longin_hint">Acoout wil be automatically registered</string>
+    <string name="activation_hint">Get activation code</string>
+
+    <string name="looding_main_title"></string>
+    <string name="looding_main_conten">Grow with Yuli</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+
+    <string name="welcome_tip_no_car">Always be aware of your surroundings\nDo not use while cycling or driving</string>
+    <string name="welcome_tip_unlock">You can unlock both of them soon after</string>
+
+</resources>

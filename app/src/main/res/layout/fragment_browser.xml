@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/include_toolbar" />
+
+        <com.module.common.weight.webview.BrowserView
+            android:id="@+id/wv_browser_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/refreshLayout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="#131313"-->
+<!--            android:gravity="center"-->
+<!--            android:visibility="gone">-->
+<!--            <com.airbnb.lottie.LottieAnimationView-->
+<!--                android:id="@+id/iv_status_icon"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                app:lottie_autoPlay="true"-->
+<!--                app:lottie_loop="true"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                app:lottie_fileName="html_loading.json" />-->
+<!--            <TextView-->
+<!--                android:id="@+id/loading_tip"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="15sp"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_below="@id/iv_status_icon"-->
+<!--                setPersonalI18N='@{"common_take_a_while"}'/>-->
+
+<!--        </RelativeLayout>-->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:roundiv="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="vo"
+            type="com.module.common.bean.dialog.MoreVO" />
+    </data>
+
+
+    <TextView
+        android:id="@+id/tv_item"
+        style="@style/MoreDialogItemTextStyle"
+        android:text='@{vo.name}' />
+</layout>

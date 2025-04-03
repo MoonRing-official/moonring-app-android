@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.moonring.jetpackmvvm">
+
+    <application>
+        <provider
+            android:authorities="${applicationId}.KtxInstaller"
+            android:name="com.moonring.jetpackmvvm.base.Ktx"
+            android:exported="false"/>
+    </application>
+</manifest>

@@ -1,0 +1,585 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.moonring.ring.viewmodule.state.MoonringInfoModel" />
+
+        <variable
+            name="click"
+            type="com.moonring.ring.ui.fragment.MoonringInfoFragment.ProxyClick" />
+
+        <import type="android.view.View" />
+    </data>
+
+
+    <!-- Fragment的其他布局 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@drawable/ic_login_bg"
+            android:orientation="vertical"/>
+
+
+        <LinearLayout
+            android:id="@+id/ll_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="63dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    app:circleImageUrl="@{viewModel.userProfile.avatar_url}" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    tools:text="IPIP"
+                    android:gravity="left|center_vertical"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    app:autoSizeMaxTextSize="22sp"
+                    app:autoSizeMinTextSize="12sp"
+                    app:autoSizeStepGranularity="2sp"
+                    app:autoSizeTextType="uniform"
+                    android:text="@{viewModel.userProfile.username}"
+                    android:layout_marginLeft="4dp"
+                    android:textSize="22sp"
+                    android:textColor="#FFFFFF"
+                    noRepeatClick="@{() -> click.test()}"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:visibility = "gone"
+                    android:visibility="@{viewModel.connectionState == 2 ? View.GONE : View.VISIBLE}">
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:src="@drawable/moonring_a_btn"
+                        app:layout_constraintLeft_toLeftOf="@+id/tv_pair_my"
+                        app:layout_constraintRight_toRightOf="@+id/tv_pair_my"
+                        app:layout_constraintTop_toTopOf="@+id/tv_pair_my"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_pair_my"/>
+                    <com.hjq.shape.view.ShapeTextView
+                        android:id="@+id/tv_pair_my"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="12dp"
+                        android:textSize="22sp"
+                        android:gravity="center"
+                        android:text="Pair My Ring"
+                        noRepeatClick="@{() -> click.pair()}"
+                        android:textColor="#FFFFFF"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:visibility="@{viewModel.connectionState == 2 ? View.VISIBLE : View.GONE}">
+                    <ImageView
+                        android:id="@+id/iv_refresh"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        noRepeatClick="@{() -> click.synMoonringData()}"
+                        android:src="@drawable/ic_refresh" />
+                    <com.moonring.ring.view.BatteryView
+                        android:id="@+id/batteryView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:progress="@{viewModel.batteryLevel}"
+                        app:isCharging = "@{viewModel.isCharging}"
+                        app:slRecWidth="40dp"
+                        app:slRecHeight="25dp"
+                        app:scaleFactor="0.5"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/iv_refresh"/>
+                    <!--                            android:layout_toRightOf="@+id/batteryView"-->
+                    <TextView
+                        android:id="@+id/tvBattery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="60%"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="35dp"
+                        android:text="@{viewModel.batteryLevel+`%`}"
+                        android:layout_alignLeft="@+id/batteryView"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10sp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Today’s Health \nData"
+                android:lineHeight="42dp"
+                android:text="@{viewModel.titleShow}"
+                android:textSize="36sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="12dp"
+                />
+
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/ll_top"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+                <com.hjq.shape.layout.ShapeConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:shape="rectangle"
+                    app:shape_radius="10dp"
+                    app:shape_startColor="#80FF0DFF"
+                    app:shape_endColor="#80FDAD63"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:paddingVertical="10dp"
+                    noRepeatClick="@{() -> click.activeEnergy()}">
+
+                    <ImageView
+                        android:id="@+id/ivFlame"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_active_energy"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tvEnergy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="4dp"
+                        android:text="Active energy"
+                        android:textColor="@android:color/white"
+                        android:textSize="22sp"
+                        app:layout_constraintTop_toTopOf="@+id/ivFlame"
+                        app:layout_constraintLeft_toRightOf="@+id/ivFlame" />
+                    <!--                    android:text="@{viewModel.sportData.cal}"-->
+                    <TextView
+                        android:id="@+id/tvCalories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="375"
+                        android:text="@{viewModel.calShow}"
+                        android:textColor="@android:color/white"
+                        android:textSize="36sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@+id/tvEnergy"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvEnergy"/>
+
+                    <TextView
+                        android:id="@+id/tvCalories_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        tools:text="kcal"
+                        android:text="kcal"
+                        android:textColor="@android:color/white"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/tvCalories"
+                        app:layout_constraintLeft_toRightOf="@+id/tvCalories"/>
+
+
+                    <TextView
+                        android:id="@+id/tvEnergyComp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:text="Less than yesterday 75 kcal"
+                        android:text="@{viewModel.calComparison}"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        app:autoSizeMaxTextSize="12sp"
+                        app:autoSizeMinTextSize="9sp"
+                        app:autoSizeStepGranularity="1sp"
+                        app:autoSizeTextType="uniform"
+                        android:layout_marginRight="4dp"
+                        android:visibility="@{viewModel.calVisibility ? View.VISIBLE : View.GONE}"
+                        app:layout_constraintTop_toBottomOf="@+id/tvCalories"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvCalories"
+                        app:layout_constraintRight_toLeftOf="@+id/tvEnergyTime"/>
+
+                    <!--                    android:text="@{viewModel.maxStepTimeDisplay}"-->
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_right_arrow"
+                        app:layout_constraintTop_toTopOf="@+id/tvEnergyTime"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvEnergyTime"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:visibility="@{viewModel.calVisibility ? View.VISIBLE : View.GONE}"/>
+                    <!--                    android:text="@{viewModel.maxStepTimeDisplay}"-->
+                    <TextView
+                        android:id="@+id/tvEnergyTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="19:34"
+                        android:text="@{viewModel.calLatestTime}"
+                        android:textColor="@android:color/white"
+                        android:textSize="10sp"
+                        android:layout_marginRight="18dp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/tvEnergyComp"
+                        android:visibility="@{viewModel.calVisibility ? View.VISIBLE : View.GONE}"/>
+
+
+
+
+
+                </com.hjq.shape.layout.ShapeConstraintLayout>
+
+
+                <com.hjq.shape.layout.ShapeConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:shape="rectangle"
+                    app:shape_radius="10dp"
+                    android:background="@drawable/ic_heart_rate_bg"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="6dp"
+                    android:paddingVertical="10dp"
+                    noRepeatClick="@{() ->  click.heartBeatDetail()}">
+
+                    <ImageView
+                        android:id="@+id/ivHeart"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_heart_rate"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tvHeartRateLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="4dp"
+                        android:text="Heart Rate"
+                        android:textColor="@android:color/white"
+                        android:textSize="22sp"
+                        app:layout_constraintTop_toTopOf="@+id/ivHeart"
+                        app:layout_constraintLeft_toRightOf="@+id/ivHeart" />
+
+                    <TextView
+                        android:id="@+id/tvHeartRate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="72"
+                        android:text="@{viewModel.heartRateShow}"
+                        android:textColor="@android:color/white"
+                        android:textSize="36sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@+id/tvHeartRateLabel"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvHeartRateLabel"/>
+
+                    <TextView
+                        android:id="@+id/tvHeartRateUnit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        tools:text="bpm"
+                        android:text="bpm"
+                        android:textColor="@android:color/white"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/tvHeartRate"
+                        app:layout_constraintLeft_toRightOf="@+id/tvHeartRate"/>
+
+                    <TextView
+                        android:id="@+id/tvHeartRateComparison"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Last sync"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp"
+                        app:layout_constraintTop_toBottomOf="@+id/tvHeartRate"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvHeartRate"
+                        android:visibility="@{viewModel.heartRateVisibility ? View.VISIBLE : View.GONE}"
+                        />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_right_arrow"
+                        app:layout_constraintTop_toTopOf="@+id/tvHeartRateTime"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvHeartRateTime"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:visibility="@{viewModel.heartRateVisibility ? View.VISIBLE : View.GONE}"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvHeartRateTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="19:34"
+                        android:text="@{viewModel.heartRateLastTime}"
+                        android:textColor="@android:color/white"
+                        android:textSize="10sp"
+                        android:layout_marginRight="18dp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/tvHeartRateComparison"
+                        android:visibility="@{viewModel.heartRateVisibility ? View.VISIBLE : View.GONE}"
+                        />
+                </com.hjq.shape.layout.ShapeConstraintLayout>
+
+
+
+                <com.hjq.shape.layout.ShapeConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:shape="rectangle"
+                    app:shape_radius="10dp"
+                    app:shape_startColor="#80FF903E"
+                    app:shape_endColor="#80E9D414"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="6dp"
+                    android:paddingVertical="10dp"
+                    noRepeatClick="@{() ->  click.stepDetail()}">
+
+                    <ImageView
+                        android:id="@+id/ivFoot"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_step"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tvStepLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="4dp"
+                        android:text="Movement"
+                        android:textColor="@android:color/white"
+                        android:textSize="22sp"
+                        app:layout_constraintTop_toTopOf="@+id/ivFoot"
+                        app:layout_constraintLeft_toRightOf="@+id/ivFoot" />
+
+                    <TextView
+                        android:id="@+id/tvStepCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="10000"
+                        android:text="@{viewModel.stepShow}"
+                        android:textColor="@android:color/white"
+                        android:textSize="36sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@+id/tvStepLabel"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvStepLabel"/>
+
+                    <TextView
+                        android:id="@+id/tvStepsUnit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        tools:text="steps"
+                        android:text="steps"
+                        android:textColor="@android:color/white"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/tvStepCount"
+                        app:layout_constraintLeft_toRightOf="@+id/tvStepCount"/>
+
+                    <TextView
+                        android:id="@+id/tvStepComparison"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:text="More than yesterday 200 steps"
+                        android:text="@{viewModel.stepComparison}"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        app:autoSizeMaxTextSize="12sp"
+                        app:autoSizeMinTextSize="9sp"
+                        app:autoSizeStepGranularity="1sp"
+                        app:autoSizeTextType="uniform"
+                        android:layout_marginRight="4dp"
+                        android:visibility="@{viewModel.stepVisibility ? View.VISIBLE : View.GONE}"
+                        app:layout_constraintTop_toBottomOf="@+id/tvStepCount"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvStepCount"
+                        app:layout_constraintRight_toLeftOf="@+id/tvStepTime"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_right_arrow"
+                        app:layout_constraintTop_toTopOf="@+id/tvStepTime"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvStepTime"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:visibility="@{viewModel.stepVisibility ? View.VISIBLE : View.GONE}"/>
+                    <!--                    android:text="@{viewModel.maxStepTimeDisplay}"-->
+                    <TextView
+                        android:id="@+id/tvStepTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="19:34"
+                        android:text="@{viewModel.stepShowLastTime}"
+                        android:textColor="@android:color/white"
+                        android:textSize="10sp"
+                        android:layout_marginRight="18dp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/tvStepComparison"
+                        android:visibility="@{viewModel.stepVisibility ? View.VISIBLE : View.GONE}"/>
+                </com.hjq.shape.layout.ShapeConstraintLayout>
+
+
+                <!--                app:shape_startColor="#52ACFF"-->
+                <!--                app:shape_endColor="#725CFA"-->
+                <com.hjq.shape.layout.ShapeConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:shape="rectangle"
+                    app:shape_radius="10dp"
+                    android:background="@drawable/ic_sleep_bg"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="6dp"
+                    android:paddingVertical="10dp"
+                    noRepeatClick="@{() -> click.sleep()}">
+
+                    <ImageView
+                        android:id="@+id/ivSleep"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_sleep"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tvSleepLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="4dp"
+                        android:text="Sleep"
+                        android:textColor="@android:color/white"
+                        android:textSize="22sp"
+                        app:layout_constraintTop_toTopOf="@+id/ivSleep"
+                        app:layout_constraintLeft_toRightOf="@+id/ivSleep" />
+
+                    <TextView
+                        android:id="@+id/tvSleepDuration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="8h 30m"
+                        android:text="@{viewModel.sleepShow}"
+                        android:textColor="@android:color/white"
+                        android:textSize="36sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSleepLabel"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvSleepLabel"/>
+
+                    <TextView
+                        android:id="@+id/tvSleepUnit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        tools:text="hrs/mins"
+                        android:text="hrs/mins"
+                        android:textColor="@android:color/white"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/tvSleepDuration"
+                        app:layout_constraintLeft_toRightOf="@+id/tvSleepDuration"
+                        android:visibility="@{viewModel.sleepShowVisibility ? View.GONE : View.VISIBLE}"/>
+
+                    <TextView
+                        android:id="@+id/tvSleepComparison"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Last sleep"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSleepDuration"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvSleepDuration"
+                        android:visibility="@{viewModel.sleepShowVisibility ? View.VISIBLE : View.GONE}"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_right_arrow"
+                        app:layout_constraintTop_toTopOf="@+id/tvSleepTime"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvSleepTime"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:visibility="@{viewModel.sleepShowVisibility ? View.VISIBLE : View.GONE}"/>
+
+                    <TextView
+                        android:id="@+id/tvSleepTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="19:34"
+                        android:text="@{viewModel.sleepLastTime}"
+                        android:textColor="@android:color/white"
+                        android:textSize="10sp"
+                        android:layout_marginRight="18dp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/tvSleepComparison"
+                        android:visibility="@{viewModel.sleepShowVisibility ? View.VISIBLE : View.GONE}"/>
+                </com.hjq.shape.layout.ShapeConstraintLayout>
+
+
+
+
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</layout>

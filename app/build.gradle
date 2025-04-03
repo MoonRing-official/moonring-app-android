@@ -1,0 +1,174 @@
+plugins {
+    id 'com.android.application'
+
+}
+
+apply plugin: 'com.android.application'
+apply from: '../dependencies.gradle'
+
+
+
+def DEV = "1"
+def ONLINE = "4"
+def SEVER_CONFIG = packagingConfig
+def APP_NAME = ""
+def APPLICATION_PACKNAME = ""
+
+print SEVER_CONFIG
+switch (SEVER_CONFIG) {
+    case DEV:
+
+        APP_NAME = "MoonringDev"
+        APPLICATION_PACKNAME = "com.moonring.ring.dev"
+        break
+    case ONLINE:
+        APP_NAME = "Moon Ring"
+        APPLICATION_PACKNAME = "com.moonring.ring"
+        break
+
+}
+
+
+android {
+    namespace "com.moonring.ring"
+
+    defaultConfig {
+
+        applicationId APPLICATION_PACKNAME
+
+        manifestPlaceholders["PN_PROJECT_ID"] = ""
+        manifestPlaceholders["PN_PROJECT_CLIENT_KEY"] = ""
+
+        if (SEVER_CONFIG == DEV) {
+            manifestPlaceholders["PN_APP_ID"] = ""
+        }else {
+            manifestPlaceholders["PN_APP_ID"] = ""
+        }
+
+
+
+
+
+
+    }
+
+
+
+    packagingOptions {
+        pickFirst 'lib/x86/libc++_shared.so'
+        pickFirst 'lib/arm64-v8a/libc++_shared.so'
+        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+        pickFirst 'lib/x86_64/libc++_shared.so'
+    }
+
+
+
+    buildTypes {
+        debug {
+
+            debuggable true
+            jniDebuggable true
+
+            zipAlignEnabled false
+
+            shrinkResources false
+
+            minifyEnabled false
+
+            buildConfigField('boolean', 'LOG_ENABLE', 'true')
+
+            manifestPlaceholders = ['APP_NAME': APP_NAME]
+
+            ndk {
+                abiFilters "armeabi-v7a", "arm64-v8a", "x86"
+            }
+
+            minifyEnabled false
+
+        }
+
+        release {
+
+            debuggable false
+            jniDebuggable false
+
+            buildConfigField('boolean', 'LOG_ENABLE', 'true')
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+
+            manifestPlaceholders = [APP_NAME: APP_NAME]
+
+            ndk {
+
+
+
+                abiFilters 'armeabi-v7a', 'arm64-v8a'
+            }
+            renderscriptDebuggable false
+            proguardFiles 'proguard-rules.pro'
+
+
+        }
+    }
+
+
+    applicationVariants.all { variant ->
+
+        variant.outputs.all { output ->
+            outputFileName = rootProject.getName() + '_v' + variant.versionName + '_' + variant.buildType.name
+            if (variant.buildType.name == buildTypes.release.getName()) {
+                if (SEVER_CONFIG == ONLINE) {
+                    outputFileName += '_release_' + new Date().format('MMdd')
+                } else {
+                    outputFileName += '_dev_' + new Date().format('MMdd')
+                }
+            }
+            outputFileName += '.apk'
+        }
+    }
+}
+
+ext {
+    particleVersion = '2.1.10'
+}
+
+
+
+
+dependencies {
+
+    implementation project(path: ':module_common')
+    implementation project(path: ':charts')
+
+    modules {
+        module("org.bouncycastle:bcprov-jdk15to18") {
+            replacedBy("org.bouncycastle:bcprov-jdk15on")
+        }
+        module("org.bouncycastle:bcprov-jdk18on") {
+            replacedBy("org.bouncycastle:bcprov-jdk15on")
+        }
+    }
+
+
+    implementation "network.particle:connect:${particleVersion}"
+    implementation "network.particle:connect-kit:${particleVersion}"
+    implementation "network.particle:connect-evm-adapter:${particleVersion}"
+    implementation "network.particle:connect-solana-adapter:${particleVersion}"
+    implementation "network.particle:connect-phantom-adapter:${particleVersion}"
+    implementation "network.particle:connect-wallet-connect-adapter:${particleVersion}"
+    implementation "network.particle:connect-auth-core-adapter:${particleVersion}"
+    implementation "network.particle:api-service:${particleVersion}"
+
+    implementation "network.particle:wallet-service:${particleVersion}"
+    implementation "network.particle:aa-service:${particleVersion}"
+
+
+
+
+
+}
+
+

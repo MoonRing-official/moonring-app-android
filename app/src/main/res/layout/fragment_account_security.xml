@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.moonring.ring.viewmodule.state.AccountSecurityViewModel" />
+        <variable
+            name="click"
+            type="com.moonring.ring.ui.fragment.AccountSecurityFragment.ProxyClick" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_login_bg"/>
+
+        <include
+            layout="@layout/include_toolbar" />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="37dp">
+
+            <!-- 账户和安全标题 -->
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Account"
+                android:textColor="#FFFFFF"
+                android:textSize="36sp"
+                android:lineHeight="43dp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+
+            <TextView
+                android:id="@+id/account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textSize="22sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="30dp"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/ll_wallet"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/iv_icon_wallet"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_email"
+                        android:layout_marginEnd="16dp"/>
+
+                    <TextView
+                        android:id="@+id/moonring_gm"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="22sp"
+                        android:textColor="#FFFFFF"
+                        tools:text="moonring@gmail.com"
+                        android:text="@{viewModel.email}"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        app:autoSizeMaxTextSize="22sp"
+                        app:autoSizeMinTextSize="12sp"
+                        app:autoSizeStepGranularity="2sp"
+                        app:autoSizeTextType="uniform"
+                        android:gravity="right|center_vertical"
+                        />
+
+
+
+
+                </LinearLayout>
+                <com.hjq.shape.view.ShapeView
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_wallet"
+                    android:background="#FFFFFF"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+                <TextView
+                    android:id="@+id/security"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Security"
+                    android:textSize="22sp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginTop="30dp"
+                    />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
+
+                    <TextView
+                        android:id="@+id/tvMasterPasswordTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Master Password"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
+
+
+
+                    <TextView
+                        android:id="@+id/tvLearnMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Learn More"
+                        android:textColor="#EF5DA8"
+                        android:textSize="10sp"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tvMasterPasswordTitle"
+                        app:layout_constraintRight_toRightOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tvMasterPasswordDescription"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="You can secure your wallet by setting a master password to ensure the safety of your assets."
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        app:layout_constraintTop_toBottomOf="@id/tvLearnMore"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+
+
+                    <View
+                        android:id="@+id/lineSeparator"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintTop_toBottomOf="@id/tvMasterPasswordDescription"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="12dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    noRepeatClick="@{() -> click.changeMasterPassword()}">
+
+                    <TextView
+                        android:id="@+id/tvChangeMasterPassword"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Change Master Password"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"/>
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_item_right_arrow"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- 标题文本 -->
+                    <TextView
+                        android:id="@+id/tvVerificationSecurity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Verification Security"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:layout_marginBottom="8dp"/>
+
+
+
+                    <!-- 描述文本 -->
+                    <TextView
+                        android:id="@+id/tvDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="The following methods will be used for security verification."
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:layout_marginBottom="16dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#FFFFFF" />
+
+                    <!-- 邮箱验证设置项 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="12dp"
+                        android:gravity="center_vertical"
+                        noRepeatClick="@{() -> click.setEmail()}">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_email" />
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Set"
+                            android:textColor="#FFFFFF"
+                            android:textSize="22sp"
+                            android:gravity="center"/>
+
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_item_right_arrow"/>
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#FFFFFF" />
+                    <!-- 手机验证设置项 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="12dp"
+                        android:gravity="center_vertical"
+                        noRepeatClick="@{() -> click.setPhone()}">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_phone_set" />
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Set"
+                            android:textColor="#FFFFFF"
+                            android:textSize="22sp"
+                            android:gravity="center"/>
+
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_item_right_arrow"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+
+            <!-- 注销按钮 -->
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:text="Log out"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:background="@drawable/moonring_a_btn"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="12dp"
+                noRepeatClick="@{() -> click.logout()}"/>
+            <Button
+                android:id="@+id/btn_later"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:text="Delete Account"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/moonring_blue_btn"
+                noRepeatClick="@{() -> click.deleteAccount()}"/>
+
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

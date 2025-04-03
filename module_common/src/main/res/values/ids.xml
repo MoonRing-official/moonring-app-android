@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="statusbarutil_fake_status_bar_view" />
+    <item type="id" name="statusbarutil_translucent_view" />
+
+    <item type="id" name="tag_view_position"></item>
+
+    <item type="id" name="search_user_vo"></item>
+    <item type="id" name="search_user_db"></item>
+
+
+    <item name="triggerDelayKey" type="id"/>
+    <item name="triggerLastTimeKey" type="id"/>
+    <item type="id" name="tag_view_follow"></item>
+    <item type="id" name="tag_view_vo"></item>
+
+    <item type="id" name="xsyd_arrow"></item>
+</resources>

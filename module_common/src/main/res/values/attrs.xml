@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="BannerView">
+        <!--点选中的颜色-->
+        <attr name="dotIndicatorFocus" format="color|reference" />
+        <!--点未选中颜色-->
+        <attr name="dotIndicatorNormal" format="color|reference" />
+        <!--点的大小-->
+        <attr name="dotSize" format="dimension" />
+        <!--点的距离-->
+        <attr name="dotDistance" format="dimension" />
+        <!--点的位置-->
+        <attr name="dotGravity" format="enum">
+            <!--居中-->
+            <enum name="center" value="0" />
+            <!--右边-->
+            <enum name="right" value="1" />
+            <!--左边-->
+            <enum name="left" value="-1" />
+        </attr>
+        <!--底部背景颜色-->
+        <attr name="bottomColor" format="color|reference" />
+        <!--宽度比-->
+        <attr name="widthProportion" format="float" />
+        <!--高度比-->
+        <attr name="heightProportion" format="float" />
+        <!--是否两边突出条目 实现一屏显示多个View的效果-->
+        <attr name="bulge" format="boolean"/>
+        <!--两边凸出距离-->
+        <attr name="bulgeDistance" format="integer"/>
+        <!--底部模式 小点 文字描述位置 覆盖在图片上 在整个图片下方-->
+        <attr name="bottomType" format="enum">
+            <!--底部覆盖图片-->
+            <enum name="coverPic" value="0"/>
+            <!--底部在图片下方-->
+            <enum name="belowPic" value="1"/>
+        </attr>
+        <!--两张图片之间的间距-->
+        <attr name="pictureSpacing" format="float"/>
+    </declare-styleable>
+
+    <declare-styleable name="PhoneVerifyView">
+
+        <!--按钮的水平左右间距-->
+        <attr name="buttonHorizontal" format="dimension" />
+        <!--按钮的上间距-->
+        <attr name="buttonTopMagrin" format="dimension" />
+        <!--edittext的水平左右间距-->
+        <attr name="editTextHorizontal" format="dimension" />
+
+        <!--btn文字-->
+        <attr  name="btn_text" format="string"/>
+
+    </declare-styleable>
+
+    <!--        头像叠加-->
+    <declare-styleable name="DiscussionAvatarView">
+        <!--头像的半径,dp为单位-->
+        <attr name="avatar_radius" format="reference|integer" />
+        <!--头像间的距离，为头像直径的长度的百分比，dp为单位-->
+        <attr name="space" format="reference|float" />
+        <!--最多显示多少个头像-->
+        <attr name="maxCount" format="reference|integer" />
+        <!--是否最后一个显示完全,默认是true-->
+        <attr name="isLastComplete" format="reference|boolean" />
+        <!--是否显示动画效果-->
+        <attr name="isShowAnimation" format="reference|boolean" />
+        <!--是否显示边框-->
+        <attr name="isShowFrame" format="reference|boolean" />
+        <!--边框颜色-->
+        <attr name="frameColor" format="reference|color" />
+        <!--边框厚度-->
+        <attr name="frameSize" format="reference|float" />
+    </declare-styleable>
+
+    <!--自定义文章view实现-->
+    <declare-styleable name="CommonArticleView">
+
+        <!--item的水平左右间距-->
+        <attr name="itemMarginHorizontal" format="dimension" />
+        <!--item的上下间距-->
+        <attr name="itemMarginVertical" format="dimension" />
+        <!--item的上下间距-->
+        <attr name="itemMarginTop" format="dimension" />
+        <!--item的上下间距-->
+        <attr name="itemMarginBottom" format="dimension" />
+        <!--item的内部左右间距-->
+        <attr name="itemPaddingHorizontal" format="dimension" />
+        <!--item的内上间距-->
+        <attr name="itemPaddingVertical" format="dimension" />
+
+        <!--item的背景-->
+        <attr name="itembackGround" format="reference|color" />
+
+        <!--关注是否显示-->
+        <attr name="follow_visibility" format="boolean" />
+        <!--更多是否显示-->
+        <attr name="more_visibility" format="boolean" />
+        <!--点赞、评论、分享是否显示-->
+        <attr name="like_comment_share_visibility" format="boolean" />
+        <!--底部线-->
+        <attr name="line_visibility" format="boolean" />
+        <!--底部线magrintop-->
+        <attr name="line_MarginTop" format="dimension" />
+        <!--底部线颜色-->
+        <attr name="line_ground" format="reference|color" />
+        <!--底部线高度-->
+        <attr name="line_height" format="dimension" />
+
+        <!--是否需要展开-->
+        <attr name="need_expand" format="boolean" />
+        <!--展开全文点击是否直接跳转-->
+        <attr name="expand_jump" format="boolean" />
+
+        <!--是否展示热门评论-->
+        <attr name="show_hotcomment" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="TagitemView">
+
+
+        <attr name="tab_paddingleft" format="dimension" />
+
+        <attr name="tab_paddingRight" format="dimension" />
+
+        <attr name="tab_paddingTop" format="dimension" />
+
+        <attr name="tab_paddingBottom" format="dimension" />
+
+        <attr name="tab_marginRight" format="dimension" />
+
+        <attr name="tab_marginTop" format="dimension" />
+
+        <attr name="tab_background" format="reference|color" />
+
+        <attr name="tab_iv_width" format="dimension" />
+
+        <attr name="tab_iv_height" format="dimension" />
+
+        <attr name="tab_iv_src" format="reference" />
+
+
+        <attr name="tab_tv_marginLeft" format="dimension" />
+
+
+        <attr name="tab_tv_text" format="string" />
+
+        <attr name="tab_tv_textColor" format="reference|color" />
+
+        <attr name="tab_tv_textSize" format="dimension" />
+
+        <attr name="tab_ivDel_vis" format="boolean" />
+
+        <attr name="tab_ivDel_width" format="dimension" />
+
+        <attr name="tab_ivDel_height" format="dimension" />
+
+        <attr name="tab_ivDel_src" format="reference" />
+
+        <attr name="tab_ivDel_marginLeft" format="dimension" />
+
+    </declare-styleable>
+
+    <declare-styleable name="RichEditText">
+        <attr name="richMaxLength" format="integer" />
+        <attr name="richIconSize" format="dimension" />
+        <attr name="editTextAtUtilJumpListener" format="reference" />
+        <attr name="richEditTopicList" format="reference" />
+        <attr name="richEditNameList" format="reference" />
+        <attr name="richEditColorAtUser" format="string" />
+        <attr name="richEditColorTopic" format="string" />
+    </declare-styleable>
+
+
+
+
+
+
+
+
+
+    <declare-styleable name="IndicatorView">
+        <attr name="indicatorColor" format="color"/>
+        <attr name="indicatorColorSelected" format="color"/>
+        <attr name="indicatorWidth" format="integer"/>
+        <attr name="gravity" format="integer"/>
+    </declare-styleable>
+
+
+
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_fill_color" format="color" />
+
+        <attr name="myCircleRadius" format="dimension"/>
+        <attr name="myBorderWidth" format="dimension"/>
+        <attr name="myBorderColor" format="color"/>
+    </declare-styleable>
+
+    <!-- bannerView的底部小图标 -->
+    <attr name="banner_icon_check" format="reference" />
+    <attr name="banner_icon_uncheck" format="reference" />
+
+    <!-- bannerView的底部小图标 -->
+    <declare-styleable name="FontTextView">
+        <attr name="fontType" format="enum">
+            <enum name="lets_go_digital" value="1" />
+            <enum name="cocos_yuli" value="2" />
+        </attr>
+    </declare-styleable>
+
+
+
+    <!-- bannerView的底部小图标 -->
+    <declare-styleable name="ImUnreadCountTextView">
+        <attr name="need_red_point" format="boolean" />
+    </declare-styleable>
+
+
+    <declare-styleable name="CocosTabLinearLayout">
+        <attr name="cocos_tab_selected" format="boolean" />
+        <attr name="cocos_tab_text" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="CocosDialogTabLinearLayout">
+        <attr name="cocodialog_selected" format="boolean" />
+        <attr name="cocodialog_tab_text" format="string" />
+        <attr name="message_text" format="string" />
+        <attr name="message_size" format="dimension"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="CocosYuliProgressBar">
+        <attr name="cocoyuli_bar_background_color" format="color|reference"/>
+    </declare-styleable>
+
+
+    <!-- MessageCountView -->
+    <declare-styleable name="MessageCountView">
+        <attr name="shape_type" format="enum">
+            <enum name="point" value="1" />
+            <enum name="message_circle" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="CocosDialogPropView">
+        <attr name="cocos_bg_size" format="dimension"/>
+    </declare-styleable>
+
+
+    <!--AutoLinkStyleTextView-->
+    <declare-styleable name="AutoLinkStyleTextView">
+        <attr name="AutoLinkStyleTextView_text_value" format="string|reference"/>
+        <attr name="AutoLinkStyleTextView_default_color" format="color|reference"/>
+        <attr name="AutoLinkStyleTextView_has_under_line" format="boolean"/>
+        <attr name="AutoLinkStyleTextView_start_image" format="reference"/>
+        <attr name="AutoLinkStyleTextView_type">
+            <enum name="start_image" value="0"/>
+            <enum name="content_text" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="DatePickerView">
+        <attr name="dpvUnitScroll" format="boolean" />
+        <attr name="dpvUnitTextColor" format="color" />
+        <attr name="dpvDateTextColor" format="color" />
+        <attr name="dpvDateTextSideColor" format="color" />
+        <attr name="dpvUnitTextSize" format="dimension" />
+        <attr name="dpvDateTextSize" format="dimension" />
+        <attr name="dpvDateStart" format="string" />
+        <attr name="dpvDateEnd" format="string" />
+        <attr name="dpvDatePosition" format="string" />
+        <attr name="dpvDateSize" format="integer" />
+        <attr name="dpvUnitMarginStart" format="dimension" />
+        <attr name="dpvLineWidth" format="dimension" />
+        <attr name="dpvLineColor" format="color" />
+        <attr name="dpvBackgroundColor" format="color" />
+        <attr name="dpvDatePaddingStart" format="dimension" />
+        <attr name="dpvDatePaddingEnd" format="dimension" />
+        <attr name="dpvDateEnableAlpha" format="boolean" />
+        <attr name="dpvPaddingTop" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="SimplePickerView">
+        <attr name="spvShowSize" format="integer" />
+        <attr name="spvTextSize" format="dimension" />
+        <attr name="spvTextColor" format="color" />
+        <attr name="spvBackgroundColor" format="color" />
+        <attr name="spvLineWidth" format="dimension" />
+        <attr name="spvLineColor" format="color" />
+        <attr name="spvPaddingTop" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="RippleView">
+        <attr name="rv_alpha" format="integer" />
+        <attr name="rv_framerate" format="integer"/>
+        <attr name="rv_rippleDuration" format="integer"/>
+        <attr name="rv_zoomDuration" format="integer" />
+        <attr name="rv_color" format="color" />
+        <attr name="rv_centered" format="boolean" />
+        <attr name="rv_type" format="enum">
+            <enum name="simpleRipple" value="0"/>
+            <enum name="doubleRipple" value="1"/>
+            <enum name="rectangle" value="2" />
+        </attr>
+        <attr name="rv_ripplePadding" format="dimension" />
+        <attr name="rv_zoom" format="boolean" />
+        <attr name="rv_zoomScale" format="float" />
+
+    </declare-styleable>
+</resources>

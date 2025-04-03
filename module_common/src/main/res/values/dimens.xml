@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 默认分割线大小 -->
+    <dimen name="line_size">1px</dimen>
+
+    <!-- 默认按钮的圆角大小 -->
+    <dimen name="button_round_size">5dp</dimen>
+    <dimen name="button_round_size1">30dp</dimen>
+    <dimen name="button_round_size_65">65dp</dimen>
+
+    <!-- 通用对话框圆角大小 -->
+    <dimen name="dialog_ui_round_size">16dp</dimen>
+
+    <!-- 默认按钮的高度大小 -->
+    <dimen name="button_height_size">45dp</dimen>
+
+    <dimen name="card_corner_radius">6dp</dimen>
+
+    <dimen name="margin_fab">16dp</dimen>
+    <dimen name="padding_normal">8dp</dimen>
+    <dimen name="padding_swipestack">64dp</dimen>
+
+    <dimen name="elevation_normal">4dp</dimen>
+    <dimen name="elevation_large">8dp</dimen>
+
+
+    <dimen name="for_20">20dp</dimen>
+    <dimen name="for_40">40dp</dimen>
+</resources>

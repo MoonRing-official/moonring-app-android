@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navation">
+    <!--    app:startDestination="@id/mainfragment"-->
+    <fragment
+        android:id="@+id/mainfragment"
+        android:name="com.moonring.ring.ui.fragment.MainFragment"
+        android:label="mainfragment"
+        tools:layout="@layout/fragment_main">
+
+
+
+
+
+        <action
+            android:id="@+id/action_mainfragment_to_browserFragment"
+            app:destination="@id/browserFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+ <action
+            android:id="@+id/action_mainfragment_to_loginfragment"
+            app:destination="@id/loginfragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+
+        <action
+            android:id="@+id/action_mainfragment_to_calorieDetailFragment"
+            app:destination="@id/calorieDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_mainfragment_to_heartRateDetailFragment"
+            app:destination="@id/heartRateDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+        <action
+            android:id="@+id/action_mainfragment_to_stepDetailFragment"
+            app:destination="@id/stepDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+        <action
+            android:id="@+id/action_mainfragment_to_bloodOxygenDetailFragment"
+            app:destination="@id/bloodOxygenDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_mainfragment_to_sleepDetailFragment"
+            app:destination="@id/sleepDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_mainfragment_to_accountSecurityFragment"
+            app:destination="@id/accountSecurityFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_mainfragment_to_walletFragment"
+            app:destination="@id/walletFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainfragment_to_myMoonRingFragment"
+            app:destination="@id/myMoonRingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainfragment_to_personalProfileFragment"
+            app:destination="@id/personalProfileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_mainfragment_to_searchMoonRingFragment"
+            app:destination="@id/searchMoonRingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_mainfragment_to_fillUserInfoFragment"
+            app:destination="@id/fillUserInfoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+        <action
+            android:id="@+id/action_mainfragment_to_pairMoonRingFragment"
+            app:destination="@id/pairMoonRingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/loginfragment"
+        android:name="com.moonring.ring.ui.fragment.LoginFragment"
+        android:label="Loginfragment"
+        tools:layout="@layout/fragment_login">
+
+
+        <action
+            android:id="@+id/action_loginfragment_to_fillUserInfoFragment"
+            app:destination="@id/fillUserInfoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_loginfragment_to_mainFragment"
+            app:destination="@id/mainfragment"
+            app:popUpTo="@id/loginfragment"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/fillUserInfoFragment"
+        android:name="com.moonring.ring.ui.fragment.FillUserInfoFragment"
+        android:label="FillUserInfoFragment"
+        tools:layout="@layout/fragment_fill_user_info">
+        <action
+            android:id="@+id/action_fillUserInfoFragment_to_mainFragment"
+            app:destination="@id/mainfragment"
+            app:popUpTo="@id/loginfragment"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_fillUserInfoFragment_to_pairMoonRingFragment"
+            app:destination="@id/pairMoonRingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+    </fragment>
+
+
+
+
+
+    <fragment
+        android:id="@+id/browserFragment"
+        android:name="com.moonring.ring.ui.fragment.BrowserFragment"
+        android:label="browserFragment" />
+
+
+
+
+
+    <fragment
+        android:id="@+id/calorieDetailFragment"
+        android:name="com.moonring.ring.ui.fragment.CalorieDetailFragment"
+        android:label="calorieDetailFragment" />
+
+    <fragment
+        android:id="@+id/heartRateDetailFragment"
+        android:name="com.moonring.ring.ui.fragment.HeartRateDetailFragment"
+        android:label="heartRateDetailFragment" />
+
+    <fragment
+        android:id="@+id/stepDetailFragment"
+        android:name="com.moonring.ring.ui.fragment.StepDetailFragment"
+        android:label="stepDetailFragment" />
+
+
+
+    <fragment
+        android:id="@+id/bloodOxygenDetailFragment"
+        android:name="com.moonring.ring.ui.fragment.BloodOxygenDetailFragment"
+        android:label="bloodOxygenDetailFragment" />
+
+
+    <fragment
+        android:id="@+id/pairMoonRingFragment"
+        android:name="com.moonring.ring.ui.fragment.PairMoonRingFragment"
+        android:label="pairMoonRingFragment" >
+        <action
+            android:id="@+id/action_pairMoonRingFragment_to_mainFragment"
+            app:destination="@id/mainfragment"
+            app:popUpTo="@id/loginfragment"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_pairMoonRingFragment_to_searchMoonRingFragment"
+            app:destination="@id/searchMoonRingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/searchMoonRingFragment"
+        android:name="com.moonring.ring.ui.fragment.SearchMoonRingFragment"
+        android:label="searchMoonRingFragment" >
+        <action
+            android:id="@+id/action_searchMoonRingFragment_to_confirmPairingFragment"
+            app:destination="@id/confirmPairingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/confirmPairingFragment"
+        android:name="com.moonring.ring.ui.fragment.ConfirmPairingFragment"
+        android:label="confirmPairingFragment" >
+
+        <action
+            android:id="@+id/action_confirmPairingFragment_to_mainfragment"
+            app:destination="@id/mainfragment"
+            app:popUpTo="@id/loginfragment"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/accountSecurityFragment"
+        android:name="com.moonring.ring.ui.fragment.AccountSecurityFragment"
+        android:label="accountSecurityFragment" >
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/walletFragment"
+        android:name="com.moonring.ring.ui.fragment.WalletFragment"
+        android:label="walletFragment" >
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/myMoonRingFragment"
+        android:name="com.moonring.ring.ui.fragment.MyMoonRingFragment"
+        android:label="myMoonRingFragment" >
+        <action
+            android:id="@+id/action_myMoonRingFragment_to_uploadLogsFragment"
+            app:destination="@id/uploadLogsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_myMoonRingFragment_to_searchMoonRingFragment"
+            app:destination="@id/searchMoonRingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/uploadLogsFragment"
+        android:name="com.moonring.ring.ui.fragment.UploadLogsFragment"
+        android:label="uploadLogsFragment" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/personalProfileFragment"
+        android:name="com.moonring.ring.ui.fragment.PersonalProfileFragment"
+        android:label="personalProfileFragment" >
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/sleepDetailFragment"
+        android:name="com.moonring.ring.ui.fragment.SleepDetailFragment"
+        android:label="sleepDetailFragment" >
+    </fragment>
+</navigation>

@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.moonring.ring.viewmodule.state.PersonalProfileViewModel" />
+        <variable
+            name="click"
+            type="com.moonring.ring.ui.fragment.PersonalProfileFragment.ProxyClick" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_login_bg"/>
+
+        <include
+            layout="@layout/include_toolbar" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="37dp">
+
+                <!-- 账户和安全标题 -->
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Personal Profile"
+                    android:textColor="#FFFFFF"
+                    android:textSize="36sp"
+                    android:lineHeight="43dp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    noRepeatClick="@{() -> click.setName()}"> <!-- Replace with your actual background image -->
+
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Name"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvIPIP"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginHorizontal="4dp"
+                        tools:text="IPIP"
+                        android:text="@{viewModel.userProfile.username}"
+                        android:gravity="right"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvName"
+                        app:layout_constraintLeft_toRightOf="@+id/tvName"
+                        app:layout_constraintRight_toLeftOf="@+id/ivArrow"
+                        app:layout_constraintTop_toTopOf="@+id/tvName" />
+
+                    <ImageView
+                        android:id="@+id/ivArrow"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_edit"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvIPIP"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvIPIP" />
+
+                    <View
+                        android:id="@+id/line"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_dateOfBirth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    noRepeatClick="@{() -> click.birthday()}"> <!-- Add your actual background image if needed -->
+
+                    <TextView
+                        android:id="@+id/tvDateOfBirthLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Date of Birth"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvDateOfBirth"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="4dp"
+                        android:layout_marginStart="10dp"
+                        android:gravity="right"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvDateOfBirthLabel"
+                        app:layout_constraintLeft_toRightOf="@+id/tvDateOfBirthLabel"
+                        app:layout_constraintRight_toLeftOf="@+id/ivEdit"
+                        app:layout_constraintTop_toTopOf="@+id/tvDateOfBirthLabel"
+                        tools:text="01/01/1980"
+                        android:maxLines="1"
+                        app:autoSizeMaxTextSize="22sp"
+                        app:autoSizeMinTextSize="12sp"
+                        app:autoSizeStepGranularity="2sp"
+                        app:autoSizeTextType="uniform"
+
+                        android:text="@{viewModel.userProfile.birthdayShow}"/>
+
+                    <ImageView
+                        android:id="@+id/ivEdit"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_edit"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvDateOfBirth"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvDateOfBirth" />
+
+                    <View
+                        android:id="@+id/lineDOB"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    noRepeatClick="@{() -> click.gender()}">
+
+                    <TextView
+                        android:id="@+id/tvGenderLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Gender"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvGender"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginHorizontal="4dp"
+                        tools:text="Not set"
+                        android:text="@{viewModel.userProfile.genderShow}"
+                        android:gravity="right"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:maxLines="1"
+                        app:autoSizeMaxTextSize="22sp"
+                        app:autoSizeMinTextSize="12sp"
+                        app:autoSizeStepGranularity="2sp"
+                        app:autoSizeTextType="uniform"
+
+                        app:layout_constraintBottom_toBottomOf="@+id/tvGenderLabel"
+                        app:layout_constraintLeft_toRightOf="@+id/tvGenderLabel"
+                        app:layout_constraintRight_toLeftOf="@+id/ivArrowGender"
+                        app:layout_constraintTop_toTopOf="@+id/tvGenderLabel" />
+
+                    <ImageView
+                        android:id="@+id/ivArrowGender"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_edit"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvGender"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvGender" />
+
+                    <View
+                        android:id="@+id/lineGender"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_height"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    noRepeatClick="@{() -> click.height()}">
+
+                    <TextView
+                        android:id="@+id/tvHeightLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Height"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvHeight"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginHorizontal="4dp"
+                        tools:text="Not set"
+                        android:gravity="right"
+                        android:text="@{viewModel.userProfile.heightShow}"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvHeightLabel"
+                        app:layout_constraintLeft_toRightOf="@+id/tvHeightLabel"
+                        app:layout_constraintRight_toLeftOf="@+id/ivArrowHeight"
+                        app:layout_constraintTop_toTopOf="@+id/tvHeightLabel" />
+
+                    <ImageView
+                        android:id="@+id/ivArrowHeight"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_edit"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvHeight"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvHeight" />
+
+                    <View
+                        android:id="@+id/lineHeight"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    noRepeatClick="@{() -> click.weight()}">
+
+                    <TextView
+                        android:id="@+id/tvWeightLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Weight"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvWeight"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginHorizontal="4dp"
+                        tools:text="Not set"
+                        android:text="@{viewModel.userProfile.weightShow}"
+                        android:gravity="right"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvWeightLabel"
+                        app:layout_constraintLeft_toRightOf="@+id/tvWeightLabel"
+                        app:layout_constraintRight_toLeftOf="@+id/ivArrowWeight"
+                        app:layout_constraintTop_toTopOf="@+id/tvWeightLabel" />
+
+                    <ImageView
+                        android:id="@+id/ivArrowWeight"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_edit"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvWeight"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvWeight" />
+
+                    <View
+                        android:id="@+id/lineWeight"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="#FFFFFF"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"/>
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

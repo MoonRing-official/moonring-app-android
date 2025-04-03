@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.PERMISSION_GRANTED"/>
+
+
+    <!--计歩需要的权限-->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.BODY_SENSORS" />
+    <uses-feature android:name="android.hardware.sensor.accelerometer" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"   tools:node="remove"/>
+
+
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"   tools:node="remove" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO"   tools:node="remove"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO"  tools:node="remove" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:node="remove" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" tools:node="remove"/>
+    <uses-permission android:name="android.permission.CAMERA" tools:node="remove"/>
+
+    <uses-feature
+        android:name="android.hardware.sensor.stepcounter"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.sensor.stepdetector"
+        android:required="true" />
+
+    <application
+        android:name="com.moonring.ring.MyApplication"
+        android:allowBackup="true"
+        tools:replace="android:allowBackup,android:label,android:fullBackupContent"
+        android:fullBackupContent="@xml/pn_backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="${APP_NAME}"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Moonrings"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
+        >
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+
+        <meta-data android:name="ScopedStorage" android:value="true" />
+
+
+        <meta-data
+            android:name="particle.network.project_client_key"
+            android:value="${PN_PROJECT_CLIENT_KEY}" />
+
+        <meta-data
+            android:name="particle.network.app_id"
+            android:value="${PN_APP_ID}" />
+
+        <meta-data
+            android:name="particle.network.project_id"
+            android:value="${PN_PROJECT_ID}" />
+
+
+        <activity
+            android:name="com.moonring.ring.WelcomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".ui.activity.SampleBleService"
+            android:enabled="true"
+            android:exported="true"
+            android:process="com.sxr.sdk.ble.keepfit.client.SampleBleService">
+            <intent-filter>
+                <action android:name="com.sxr.sdk.ble.BluetoothLeService.SampleBleService" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name="com.moonring.ring.ui.activity.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges = "fontScale"
+            android:exported="true">
+            <intent-filter >
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Particle Connect Redirect Callback -->
+        <!-- Particle AuthCore Start -->
+        <activity
+            android:name="com.particle.auth.controller.AuthCoreWebActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@style/ThemeAuthWeb">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="ac${PN_APP_ID}" />
+            </intent-filter>
+        </activity>
+        <!-- Particle AuthCore End -->
+
+        <!-- Particle Connect Redirect Callback -->
+        <activity
+            android:name="com.connect.common.controller.RedirectActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="connect${PN_APP_ID}" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="particle.network.project_client_key"
+            android:value="${PN_PROJECT_CLIENT_KEY}" />
+
+        <meta-data
+            android:name="particle.network.app_id"
+            android:value="${PN_APP_ID}" />
+
+        <meta-data
+            android:name="particle.network.project_id"
+            android:value="${PN_PROJECT_ID}" />
+
+
+
+        <meta-data android:name="android.app.lib_name"
+            android:value="cocos2djs" />
+        <!--全面屏  升级targetSdkVersion为25以上版本，现在基本都是25以上了，所以以下三个没有必要配置了
+        关于刘海屏
+
+        适配华为（huawei）刘海屏
+        -->
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true"/>
+        <!--适配小米（xiaomi）刘海屏-->
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait|landscape" />
+
+
+        <service android:name="com.blankj.utilcode.util.MessengerUtils$ServerService"
+            tools:replace="android:exported"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.moonring.ring.messenger" />
+            </intent-filter>
+        </service>
+
+
+
+    </application>
+
+</manifest>

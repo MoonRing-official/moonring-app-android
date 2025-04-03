@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App 样式中引用的颜色 -->
+    <color name="common_primary_color">@color/white</color>
+    <color name="common_primary_dark_color">@color/black</color>
+    <color name="common_accent_color">@color/white</color>
+    <!-- 透明色 -->
+    <color name="transparent">#00000000</color>
+
+    <color name="panda">#FF757575</color>
+    <color name="common_text_color">#343434</color>
+    <color name="common_window_background_color">#FFFBFBFB</color>
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+    <color name="wallet_text">#FDF8CA</color>
+    <color name="wallet_id_text">#7998C7</color>
+
+
+
+
+
+
+
+
+    <color name="login_text_color">#626E8F</color>
+
+    <color name="colorPrimary">#232A30</color>
+    <color name="colorPrimaryDark">#2196F3</color>
+    <color name="colorAccent">#2196F3</color>
+    <color name="textHint">#999999</color>
+    <color name="colorGray">#333</color>
+    <color name="colorBlack666">#666</color>
+    <color name="colorBlack333">#333</color>
+    <color name="windowBackground">#F5F5F5</color>
+    <color name="background">#d8d8d8</color>
+    <color name="backgroundeee">#eeeeee</color>
+    <color name="backgrounGrey">#CCCCCC</color>
+    <color name="texttipColor">#a0a0a0</color>
+    <color name="diverColoe">#cecece</color>
+    <color name="accent">#E91E63</color>
+    <color name="chinaHoliDay">#e10015</color>
+
+    <color name="treasure_color">#B0BEFF</color>
+
+    <color name="add_points_true">#FFFFFF</color>
+    <color name="add_points_false">#939598</color>
+    <color name="add_points_num_color">#FF8858</color>
+
+
+    <color name="eamil_true">#EDB58D</color>
+    <color name="eamil_false">#61687B</color>
+
+    <color name="num_bg">#CC343E67</color>
+    <color name="imbg">#303A5B</color>
+
+    <color name="rippelColor">#FFFFFF</color>
+</resources>

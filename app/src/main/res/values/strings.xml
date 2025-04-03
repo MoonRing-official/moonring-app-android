@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name"></string>
+    <string name="register_tip"></string>
+    <string name="phone_verifiy"></string>
+    <string name="login"></string>
+
+
+
+    <string name="permission_location">In order to scan ble device, we need to request location permission.</string>
+    <string name="permission_ble_scan">Please open ble scan permissions</string>
+    <string name="permission_ble_connect">Please open ble connect permissions</string>
+    <string name="permission_title">Permission Request</string>
+    <string name="permission_content">In order to obtain data from the moonring device, we need to request location permissions. Please turn on the bluetooth scanning permission. Please turn on the Bluetooth connection permission</string>
+
+    <string name="permission_rj_title"></string>
+    <string name="permission_rj_content">You will not be able to search for your ring unless your location and Bluetooth permissions are authorised</string>
+
+    <string name="action_cancel">Cancel</string>
+    <string name="action_ok">Confirm</string>
+    <string name="calorie_details">Active energy</string>
+    <string name="step_details">Movement\n</string>
+    <string name="terms_of_service">Terms of service</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="service_privacy_policy">Terms of service &amp; Privacy Policy</string>
+    <string name="next">NEXT</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+
+    <string-array name="number_array">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
+</resources>
