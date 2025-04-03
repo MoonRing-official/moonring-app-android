@@ -1,2 +1,1 @@
-# moonring-app-android
-moonring-app-android
+# Moon Ring Android App
